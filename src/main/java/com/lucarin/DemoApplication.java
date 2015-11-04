@@ -21,8 +21,8 @@ public class DemoApplication {
     @RequestMapping("/")
     public String home() {
         Person n = new Person();
-        n.setFirstName("DIO");
-        n.setLastName("eDai");
+        n.setFirstName("Luca");
+        n.setLastName("Rin");
 
         this.repository.save(n);
 
