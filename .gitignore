@@ -2,3 +2,5 @@
 .gradle
 .classpath
 build
+.classpath
+

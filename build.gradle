@@ -33,7 +33,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-web')
@@ -75,10 +74,12 @@ task buildDocker(type: Docker, dependsOn: buildDockerMySql) {
   }
 }
 
-task writeClasspath << {
+task writeClasspath {
     //buildDir.mkdirs()
     new File(".", ".classpath").text = configurations.runtime.asPath + "\n"
 }
+tasks.build.dependsOn(writeClasspath)
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.7'
