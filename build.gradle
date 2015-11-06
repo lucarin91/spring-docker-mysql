@@ -49,7 +49,7 @@ eclipse {
     }
 }
 
-task buildDockerData(type: Docker, dependsOn: build) {
+task buildDockerData(type: Docker) {
   push = false
   applicationName = "${jar.baseName}-data"
   dockerfile = file('src/main/docker/data/Dockerfile')
