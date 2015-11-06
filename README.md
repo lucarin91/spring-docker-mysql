@@ -12,11 +12,11 @@ The demo use gradle as building tools with the docker plugin to automatic build 
 The database is access by the hibernate/JPA technology.
 
 ## How to run
-### prerequisite
+#### prerequisite
 - **Docker**, with the permission to run containers in user mode (simply add your user to the *docker* group)
 - **Java 8**
 
-### run the demo
+#### run the demo
 Go inside the folder of the demo and run:
 ```
 ./gradlew build buildDocker
@@ -27,8 +27,13 @@ Now start all the container with:
 ./start.sh
 ```
 
-Eventually the demo is accessible at  `http://localhost:8080`.
+## How to use
+After the start script the application can be use at `http://localhost:8080`, with the following path:
+- `/` return `Hello World`
+- `GET: /person` return a json array of Person.
+- `POST: /person` add a new person to the Database. The POST request must have the json of the person inside the body and the content-type set to `application/json`.
 
+### Note
 You can use all the docker command to view and administrate the docker container as:
 - `docker ps` view the running container
 - `docker stop <name>` stop a container
