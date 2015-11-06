@@ -19,7 +19,7 @@ The database is access by the hibernate/JPA technology.
 ### run the demo
 Go inside the folder of the demo and run:
 ```
-./gradlew buildDocker
+./gradlew build buildDocker
 ```
 
 Now start all the container with:
