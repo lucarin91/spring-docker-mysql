@@ -1,3 +1,6 @@
 *.class
 .gradle
+.classpath
 build
+.classpath
+

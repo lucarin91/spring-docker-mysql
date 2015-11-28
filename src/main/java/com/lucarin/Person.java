@@ -33,10 +33,8 @@ class Person {
         this.lastName = lastname;
     }
 
-    @Override
-    public String toString() {
-        return "Person [firstName=" + this.firstName + ", lastName=" + this.lastName
-                + "]";
+    public Long getId(){
+            return id;
     }
 
     public String getName() {

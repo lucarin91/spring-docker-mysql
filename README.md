@@ -1,39 +1,43 @@
-# spring-boot-docker-mysql
-Demo Spring Boot application running inside docker container linked with MySQL container
+# Spring Docker mySql Demo
+This is a demo of a web service using Spring-boot and a mySql connection using JPA and Spring-data. The all project is contanerize by Docker, using three different container as the only-data-pattern of Docker suggest.
 
-## How to run it with Docker
-Assume you already have Docker installed. See https://docs.docker.com/installation/.
+## Structure
+Three Docker image:
+- **web**: based from `java:8` image, used only to run the spring application.
+- **mysql**: based on a `mysql:5.7` image, use to run the mysql demon.
+- **data**: used to store the mysql database.
 
-First, clone the project and build locally:
+The demo use gradle as building tools with the docker plugin to automatic build all the necessary image.
 
-~~~
-git clone https://github.com/jiwhiz/spring-boot-docker-mysql.git
-cd spring-boot-docker-mysql
-mvn clean package docker:build
-~~~
+The database is access by the hibernate/JPA technology.
 
-Run MySQL 5.6 in Docker container:
+## How to run
+#### prerequisite
+- **Docker**, with the permission to run containers in user mode (simply add your user to the *docker* group)
+- **Java 8**
 
-~~~
-docker run --name demo-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=demo -e MYSQL_USER=demo_user -e MYSQL_PASSWORD=demo_pass -d mysql:5.6
-~~~
+#### run the demo
+Go inside the folder of the demo and run:
+```
+./gradlew build buildDocker
+```
 
-Check the log to make sure the server is running OK:
-~~~
-docker logs demo-mysql
-~~~
+Now start all the container with:
+```
+./start.sh
+```
 
-Run demo application in Docker container and link to demo-mysql:
+## How to use
+After the start script the application can be use at `http://localhost:8080`, with the following path:
+- `/` return `Hello World`
+- `GET: /person` return a json array of Person.
+- `POST: /person` add a new person to the Database. The POST request must have the json of the person inside the body and the content-type set to `application/json`.
 
-~~~
-docker run -p 8080:8080 --name demo-app --link demo-mysql:mysql -d jiwhiz/spring-boot-docker-mysql
-~~~
+### Note
+You can use all the docker command to view and administrate the docker container as:
+- `docker ps` view the running container
+- `docker stop <name>` stop a container
+- `docker start <name` start a container
+- `docker rm <name>` remove a container
 
-You can check the log by
-~~~
-docker logs demo-app
-~~~
-
-Open http://localhost:8080 in browser and you should see the message. If you are using Boot2Docker in Mac OSX, 
-find ip by *boot2docker ip* and replace _localhost_ to _boot2docker ip_.
-
+If you do `docker ps` you can't see the only data container because it is not a real running container, but something similar to a external shared folder.

@@ -1,9 +1,9 @@
 spring:
     jpa:
         database: MYSQL
+        generate-ddl: true
         hibernate:
             ddl-auto: update
-
     datasource:
         url: jdbc:mysql://springapp-mysql:3306/demo
         username: user
