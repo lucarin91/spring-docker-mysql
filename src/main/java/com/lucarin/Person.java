@@ -10,11 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Repository
-interface PersonRepository extends CrudRepository<Person, Long> {
-
-}
-
 @Entity
 class Person {
     @Id

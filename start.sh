@@ -1,6 +1,8 @@
 #!/bin/bash
 baseName="springapp"
 
+# docker stop ${baseName}-data
+# docker rm ${baseName}-data
 docker run --name ${baseName}-data spring/${baseName}-data
 
 docker stop ${baseName}-mysql

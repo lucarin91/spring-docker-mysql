@@ -7,9 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
-@SpringBootApplication
 @RestController
-public class DemoApplication {
+public class PersonController {
     @Autowired
     private PersonRepository repository;
 
@@ -27,9 +26,5 @@ public class DemoApplication {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String home() {
         return "Hello World!";
-    }
-
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(DemoApplication.class, args);
     }
 }
